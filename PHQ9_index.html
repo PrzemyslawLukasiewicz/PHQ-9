@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>PHQ-9 – Kwestionariusz Zdrowia Pacjenta</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; line-height: 1.6; }
+    h1 { font-size: 24px; color: #333; }
+    select { width: 100%; padding: 5px; margin-bottom: 20px; }
+    button { padding: 10px 20px; font-size: 16px; }
+    #result { margin-top: 30px; font-size: 20px; font-weight: bold; color: #006400; }
+  </style>
+</head>
+<body>
+  <h1>PHQ-9 – Kwestionariusz Zdrowia Pacjenta</h1>
+  <form id="phqForm">
+    <p>Jak często w ciągu ostatnich 2 tygodni dokuczały Panu/Pani następujące problemy?</p>
+    <p>1. Niewielkie zainteresowanie lub odczuwanie przyjemności z wykonywania czynności</p>
+    <select name="q1">
+      <option value="0">0 – Wcale nie dokuczały</option>
+      <option value="1">1 – Kilka dni</option>
+      <option value="2">2 – Więcej niż połowę dni</option>
+      <option value="3">3 – Niemal codziennie</option>
+    </select>
+
+    <p>2. Uczucie smutku, przygnębienia lub beznadziejności</p>
+    <select name="q2">
+      <option value="0">0 – Wcale nie dokuczały</option>
+      <option value="1">1 – Kilka dni</option>
+      <option value="2">2 – Więcej niż połowę dni</option>
+      <option value="3">3 – Niemal codziennie</option>
+    </select>
+
+    <p>3. Kłopoty z zaśnięciem, przerywany sen, albo zbyt długi sen</p>
+    <select name="q3">
+      <option value="0">0 – Wcale nie dokuczały</option>
+      <option value="1">1 – Kilka dni</option>
+      <option value="2">2 – Więcej niż połowę dni</option>
+      <option value="3">3 – Niemal codziennie</option>
+    </select>
+
+    <p>4. Uczucie zmęczenia lub brak energii</p>
+    <select name="q4">
+      <option value="0">0 – Wcale nie dokuczały</option>
+      <option value="1">1 – Kilka dni</option>
+      <option value="2">2 – Więcej niż połowę dni</option>
+      <option value="3">3 – Niemal codziennie</option>
+    </select>
+
+    <p>5. Brak apetytu lub przejadanie się</p>
+    <select name="q5">
+      <option value="0">0 – Wcale nie dokuczały</option>
+      <option value="1">1 – Kilka dni</option>
+      <option value="2">2 – Więcej niż połowę dni</option>
+      <option value="3">3 – Niemal codziennie</option>
+    </select>
+
+    <p>6. Poczucie niezadowolenia z siebie — lub uczucie, że jest się do niczego, albo że zawiódł/a Pan/Pani siebie lub rodzinę</p>
+    <select name="q6">
+      <option value="0">0 – Wcale nie dokuczały</option>
+      <option value="1">1 – Kilka dni</option>
+      <option value="2">2 – Więcej niż połowę dni</option>
+      <option value="3">3 – Niemal codziennie</option>
+    </select>
+
+    <p>7. Problemy ze skupieniem się (np. przy czytaniu gazety lub oglądaniu telewizji)</p>
+    <select name="q7">
+      <option value="0">0 – Wcale nie dokuczały</option>
+      <option value="1">1 – Kilka dni</option>
+      <option value="2">2 – Więcej niż połowę dni</option>
+      <option value="3">3 – Niemal codziennie</option>
+    </select>
+
+    <p>8. Poruszanie się lub mówienie tak wolno, że inni mogliby to zauważyć? Albo przeciwnie – niemożność usiedzenia w miejscu lub podenerwowanie powodujące ruchliwość znacznie większą niż zwykle</p>
+    <select name="q8">
+      <option value="0">0 – Wcale nie dokuczały</option>
+      <option value="1">1 – Kilka dni</option>
+      <option value="2">2 – Więcej niż połowę dni</option>
+      <option value="3">3 – Niemal codziennie</option>
+    </select>
+
+    <p>9. Myśli, że lepiej byłoby umrzeć albo chęć zrobienia sobie jakiejś krzywdy</p>
+    <select name="q9">
+      <option value="0">0 – Wcale nie dokuczały</option>
+      <option value="1">1 – Kilka dni</option>
+      <option value="2">2 – Więcej niż połowę dni</option>
+      <option value="3">3 – Niemal codziennie</option>
+    </select>
+
+    <button type="button" onclick="calculateScore()">Pokaż wynik</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    function calculateScore() {
+      let form = document.getElementById('phqForm');
+      let total = 0;
+      for (let i = 0; i < form.elements.length; i++) {
+        if (form.elements[i].tagName === "SELECT") {
+          total += parseInt(form.elements[i].value);
+        }
+      }
+      document.getElementById('result').innerText = "Twój wynik PHQ-9: " + total + " punktów.";
+    }
+  </script>
+</body>
+</html>
